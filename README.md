@@ -8,10 +8,10 @@ This project provides you HTTP based API which lets you add customers to the ban
 ### Prerequisites
 This project requires the following to run, make sure all of the following components are installed before moving forward.
 ```
-NodeJs - To run the application
-npm - To manage packages
-MongoDB - Database
-Robot3T - GUI to look into the database
+NodeJs		-	To run the application
+npm			- 	To manage packages
+MongoDB 	- 	Database
+Robot3T		-	GUI to look into the database
 ```
 ### Installing
 A step by step installation process.
@@ -24,6 +24,8 @@ Go inside the bank-token-generator directory
 ```
 cd bank-token-generator
 ```
+Rename file ```.env.example``` to ```.env```
+
 Install the required packages
 ```
 npm install
