@@ -1,0 +1,86 @@
+swagger: '2.0'
+info:
+  description: This API provides an easy way to provide token to customers and add them to the queue to be served at the counters on the basis of their priority.
+  version: '1.0.0'
+  title: Bank token priority API
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: ayushs56@gmail.com
+  license:
+    name: ISC
+host: localhost:9001
+basePath: /api/v1
+schemes:
+- http
+paths:
+  /customer:
+    post:
+      tags:
+        - Add customer
+      summary: Get token and add in line
+      description: This route provides the functionality to add a customer to bank, generate token for the customer and then add the customer to the queue according to the priority.
+      parameters:
+        - in: body
+          name: body
+          description: Customer Payload
+          required: true
+          schema:
+            $ref: '#/definitions/Customer'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Customer is granted a uniqueu token and added to the queue
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /counter:
+    post:
+      tags:
+        - Counter module
+      summary: Server customer
+      description: It will server the customer for corresponding action of customer and then adds the served cutomer detail in database. Clears the counter and waits for next customer in queue. 
+      parameters:
+        - in: body
+          name: body
+          description: Counter Payload
+          required: false
+          schema:
+            $ref: '#/definitions/Counter'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Response from counter
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+definitions:
+  Customer:
+    properties:
+      name:
+        type: string
+        description: name of the customer
+      type:
+        type: number
+        description: for priority customer set 1, for non-priority customer set 2
+      action:
+        type: string
+        description: the action which customer wants to perform at the counter
+  Counter:
+    properties:
+  ApiResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: object
