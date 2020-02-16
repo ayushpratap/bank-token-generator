@@ -1,5 +1,7 @@
+
 # Bank-token-generator
 
+  
 
 This project provides you HTTP based API which lets you add customers to the bank, provided them a unique linearly incrementing token, and adds those customers to the counter queue, which will be served according to the priority of the customers. Privileged customers will be served as soon as possible, with minimum wait time.
 
@@ -59,6 +61,11 @@ _**I implemented a priority queue using an array as the container. This implemen
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Important API endpoints
+*	/api/v1/docs/ - For API documentation
+*	/api/v1/customer/ -  To add the customer
+*	/api/v1/counter - To server the customer
 
 ## TODO
 *	Add Redis support
