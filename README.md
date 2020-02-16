@@ -24,6 +24,8 @@ Go inside the bank-token-generator directory
 ```
 cd bank-token-generator
 ```
+Rename file ```.env.example``` to ```.env```
+
 Install the required packages
 ```
 npm install
